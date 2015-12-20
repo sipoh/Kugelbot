@@ -27,7 +27,7 @@ var callback = function(msg){
                 break;
             };
         default:
-            antwort = 'Hast du gerade ' + text + ' gesagt?';
+            //antwort = 'Hast du gerade ' + text + ' gesagt?';
             merke = true;
     }
     option = {reply_to_message_id: msg.message_id};

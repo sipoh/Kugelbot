@@ -7,6 +7,7 @@ var fs = require('fs'),
 
 require('./messagehandler/onMessage')(kugelbot);
 require('./messagehandler/onPhoto')(kugelbot);
+require('./messagehandler/onSticker')(kugelbot);
 
 
 //{ message_id: 5,

@@ -3,9 +3,10 @@ var bot;
 var callback = function(msg){
     console.log(msg);
     var antwort = 'Danke.';
+    var path = 'L:/Fotos vom Fotobot'; //TODO
     bot.sendMessage(msg.chat.id, antwort);
-    bot.downloadFile(msg.photo[0].file_id, './thumbnails/');
-    bot.downloadFile(msg.photo[msg.photo.length-1].file_id, './fullsize/');
+    bot.downloadFile(msg.photo[0].file_id, path + '/thumbnails/');
+    bot.downloadFile(msg.photo[msg.photo.length-1].file_id, path + '/fullsize/');
 };
 
 module.exports = function(kugelbot) {
