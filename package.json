@@ -1,0 +1,18 @@
+{
+  "name": "kugelbot",
+  "version": "0.0.1",
+  "description": "Kugelbot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kugelbot",
+    "telegram-bot"
+  ],
+  "author": "Kugelfisch",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.17.0"
+  }
+}
