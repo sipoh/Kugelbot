@@ -15,15 +15,15 @@ module.exports = function(kugelbot) {
 
 //{ message_id: 367,
 //    from:
-//    { id: 40122147,
-//        first_name: 'Simon',
-//        last_name: 'Pohlmann',
-//        username: 'SimonPohlmann' },
+//    { id: 1234,
+//        first_name: 'fn',
+//        last_name: 'ln',
+//        username: 'un' },
 //    chat:
-//    { id: 40122147,
-//        first_name: 'Simon',
-//        last_name: 'Pohlmann',
-//        username: 'SimonPohlmann',
+//    { id: 1234,
+//        first_name: 'fn',
+//        last_name: 'ln',
+//        username: 'un',
 //        type: 'private' },
 //    date: 1450639447,
 //        photo:
