@@ -1,7 +1,7 @@
 var bot;
 
 var callback = function(msg){
-    console.log(msg);
+    //console.log(msg);
     if(msg.chat.type == 'private'){
         var antwort = 'Danke.';
         bot.sendMessage(msg.chat.id, antwort);
