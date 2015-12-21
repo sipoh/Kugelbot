@@ -1,20 +1,16 @@
-var FeedParser = require('node-feedparser')
-    , fs = require('fs')
-    , feed = 'https://www.tagesschau.de/xml/rss2';
+rsj = require('rsj');
 
-fs.createReadStream(feed)
-    .on('error', function (error) {
-        console.error(error);
-    })
-    .pipe(new FeedParser())
-    .on('error', function (error) {
-        console.error(error);
-    })
-    .on('meta', function (meta) {
-        console.log('===== %s =====', meta.title);
-    })
-    .on('readable', function() {
-        var stream = this, item;
-        while (item = stream.read()) {
-            console.log('Got article: %s', item.title || item.description);
-        }})
+rsj.r2j('https://www.tagesschau.de/xml/rss2',function(json) { console.log(json);});
+
+exports.r2j = r2j;
+
+var FeedParser = require('feedparser');
+parser = new FeedParser();
+
+module.exports = function (uri, cb) {
+    parser.parseUrl(uri, function (err, meta, articles) {
+        if (err) return console.error(err);
+        cb(JSON.stringify(articles));
+    });
+};
+

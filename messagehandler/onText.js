@@ -1,0 +1,102 @@
+var merke = false,
+    bot;
+
+var feed = require('feed-read'),  // require the feed-read module
+    url = ["https://www.tagesschau.de/xml/rss2", 'www.tagesschau.de']; // RSS Feed
+
+var ausgabe = function (req, msg, ausgabe_text) {
+    console.log(req);
+    // fetch rss feed for the url:
+    feed(req[0], function (err, articles) {
+        //err = 'Not defined';
+
+        //Set amount of articles to be listed.
+        if (articles.length > 5) {
+            var max = 5;
+        }
+        else {
+            var max = articles.length;
+        }
+
+        // loop through the list of articles returned
+        for (var i = 0; i < max; i++) {
+
+            // stream article title (and what ever else you want) to client
+            console.log(articles[i]);
+            //ausgabe_text.push(articles[i].title);
+
+            //bot.sendMessage(msg.chat.id, articles[i].title);
+            ausgabe_text = ausgabe_text + '[' + articles[i].title + '](' + articles[i].link + ')\n';
+            //console.log(ausgabe_text);
+
+            // check we have reached the end of our list of articles & urls
+        } //  end inner for loop
+        //ausgabe_text = ausgabe_text + '\n' + req[1];
+        options = {parse_mode: 'Markdown'};
+        bot.sendMessage(msg.chat.id, ausgabe_text, options);
+    }); // end call to feed (feed-read) method
+
+};
+
+
+var callback = function (msg) {
+    console.log(msg);
+    var text = msg.text;
+    var command = text.split('@kugel_bot');
+    var antwort;
+    var options;
+    console.log(command);
+    switch (command[0].toLowerCase()) {
+        case '/fick dich':
+            antwort = 'Hier und jetzt? Nee. Lieber nicht.';
+            option = {reply_to_message_id: msg.message_id};
+            bot.sendMessage(msg.chat.id, antwort, options);
+            break;
+        //case ('/ja@kugel_bot'):
+        case '/ja':
+            antwort = 'Okay';
+            option = {reply_to_message_id: msg.message_id};
+            bot.sendMessage(msg.chat.id, antwort, options);
+            break;
+        case '/start':
+            antwort = 'Hallo. Ich bin der Kugelbot.';
+            option = {reply_to_message_id: msg.message_id};
+            bot.sendMessage(msg.chat.id, antwort, options);
+            break;
+        case '/tagesschau':
+            //case '/tagesschau@kugel_bot':
+            var ausgabe_text = '*Die fünf neusten Beiträge auf* [Tagesschau.de](www.tagesschau.de) *heißen*: \n \n';
+            ausgabe(url, msg, ausgabe_text);
+            break;
+        case '1337':
+            antwort = '1337';
+            option = {reply_to_message_id: msg.message_id};
+            bot.sendMessage(msg.chat.id, antwort, options);
+            break;
+        case 'gute nacht':
+        case 'good n8':
+        case 'gute n8':
+            bot.sendSticker(msg.chat.id, 'BQADAwADrQIAAqbJWAABfU1XyeWYp6gC');
+            break;
+        //case 'ja':
+        //case 'jop':
+        //case 'jo':
+        //case 'jap':
+        //case 'genau':
+        //    if (merke) {
+        //        antwort = 'Okay';
+        //        options = {parse_mode: 'Markdown', reply_to_message_id: msg.message_id};
+        //        bot.sendMessage(msg.chat.id, antwort, options);
+        //        merke = false;
+        //        break;
+        //    };
+        default:
+            //antwort = 'Hast du gerade ' + text + ' gesagt?';
+            merke = true;
+    }
+};
+
+module.exports = function (kugelbot) {
+    bot = kugelbot;
+    bot.on('text', callback);
+};

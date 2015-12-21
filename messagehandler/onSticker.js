@@ -1,32 +1,20 @@
 var bot;
 
-var callback = function(msg){
-    console.log(msg);
-    if(msg.chat.type == 'private'){
-        var antwort = 'Danke.';
-        bot.sendMessage(msg.chat.id, antwort);
-    }
 
-    //var path = 'L:/Fotos vom Fotobot'; //TODO
-    var path = '.'; //TODO
-    bot.downloadFile(msg.photo[0].file_id, path + '/thumbnails/');
-    bot.downloadFile(msg.photo[msg.photo.length-1].file_id, path + '/fullsize')
-        .then(function() {
-            if(msg.chat.type == 'private') {
-                bot.sendMessage(msg.chat.id, 'Download abgeschlossen!');
-            }
-            else{
-                if(msg.chat.type == 'group'){
-                    bot.sendMessage(msg.from.id, 'Dein Foto in der ' + msg.chat.title + '-Gruppe wurde archiviert.');
-                }
-            }
-        });
+var callback;
+callback = function (msg) {
+    console.log(msg);
+    //console.log(ausgabe_text);
+    var antwort = 'Hihi. Der ist ja witzig.';
+    //var antwort = ausgabe_text;
+    bot.sendMessage(msg.chat.id, antwort);
 };
 
 module.exports = function(kugelbot) {
     bot = kugelbot;
-    bot.on('photo', callback);
+    bot.on('sticker', callback);
 };
+
 
 //{ message_id: 367,
 //    from:

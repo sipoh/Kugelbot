@@ -5,10 +5,9 @@ var fs = require('fs'),
         polling: true
     });
 
-require('./messagehandler/onMessage')(kugelbot);
+require('./messagehandler/onText')(kugelbot);
 require('./messagehandler/onPhoto')(kugelbot);
 require('./messagehandler/onSticker')(kugelbot);
-
 
 //{ message_id: 5,
 //    from:
