@@ -13,7 +13,7 @@
   "author": "Kugelfisch",
   "license": "ISC",
   "dependencies": {
-    "feed-read": "0.0.1",
+    "feed-read": "^0.0.1",
     "node-telegram-bot-api": "^0.17.0"
   }
 }
