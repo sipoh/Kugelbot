@@ -78,6 +78,13 @@ var callback = function (msg) {
                     });
                     client.addListener('error', function(message) {
                         console.log('error: ', message);
+                        fs.writeFile('../log.txt', message + '\n', function(err){
+                            if (err)
+                                return  console.log(err);
+                        });
+                    });
+                    client.addListener('invite', function(channel, from, message){
+                        bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.');
                     });
                     break;
                 case 'listen':
@@ -106,7 +113,7 @@ var callback = function (msg) {
                     break;
                 case 'stop':
                     antwort = 'IRC getrennt';
-                    var reason = '@' + msg.from.username + ' via telegram';
+                    var reason = toString('@' + msg.from.username + ' via telegram');
                     console.log(reason);
                     client.disconnect(reason);
                     options = {reply_to_message_id: msg.message_id};
