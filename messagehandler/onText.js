@@ -34,7 +34,7 @@ var callback = function (msg) {
     console.log(msg);
     var text = msg.text.split('@kugel_bot');
     console.log('text: ' + text);
-    var command = text[0].split('>');
+    var command = text[0].split('-');
     console.log('command 0: ' + command[0]);
     console.log('command 1: ' + command[1]);
     var antwort;
@@ -80,9 +80,6 @@ var callback = function (msg) {
                     client.disconnect();
                     options = {reply_to_message_id: msg.message_id};
                     bot.sendMessage(msg.chat.id, antwort, options);
-                    break;
-                    break;
-                case '/irc stop':
                     break;
             }
             break;
