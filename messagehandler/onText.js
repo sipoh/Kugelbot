@@ -86,7 +86,7 @@ var callback = function (msg) {
                     client.addListener('invite', function(channel, from){
                         options = {
                             reply_markup: JSON.stringify({
-                                keyboard: [['OK','Cancel']],
+                                keyboard: [['/irc-join-'+channel,'Cancel']],
                                 one_time_keyboard: true,
                                 resize_keyboard: true,
                                 force_reply: true
