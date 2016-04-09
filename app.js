@@ -8,7 +8,7 @@ var fs = require('fs'),
 require('./messagehandler/onText')(kugelbot);
 require('./messagehandler/onPhoto')(kugelbot);
 require('./messagehandler/onSticker')(kugelbot);
-require('./messagehandler/irc_test')(kugelbot);
+//require('./messagehandler/irc_test')(kugelbot);
 
 //{ message_id: 5,
 //    from:

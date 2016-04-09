@@ -60,6 +60,7 @@ var callback = function (msg) {
             break;
         case '/irc':
             antwort = 'IRC läuft';
+            var irc = require('irc');
             var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
                 channels: ['#+Punkt']
             });
