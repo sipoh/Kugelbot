@@ -88,7 +88,8 @@ var callback = function (msg) {
                             reply_markup: JSON.stringify({
                                 keyboard: [['OK','Cancel']],
                                 one_time_keyboard: true,
-                                resize_keyboard: true
+                                resize_keyboard: true,
+                                force_reply: true
                             })
                         };
                         bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.',options);
