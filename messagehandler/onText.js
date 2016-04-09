@@ -101,7 +101,7 @@ var callback = function (msg) {
                     break;
                 case 'stop':
                     antwort = 'IRC getrennt';
-                    client.disconnect();
+                    client.disconnect(msg.from.first_name + '(@' + msg.from.username + ') via telegram' );
                     options = {reply_to_message_id: msg.message_id};
                     bot.sendMessage(msg.chat.id, antwort, options);
                     break;
