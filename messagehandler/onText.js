@@ -70,12 +70,12 @@ var callback = function (msg) {
         case '/irc':
             switch (command[1].toLowerCase()) {
                 case 'start':
-                    antwort = 'IRC verbunden';
                     client.connect();
                     client.addListener('registered', function(message){
                         console.log(message);
+                        antwort = message.server + ': ' + message.args[1];
+                        bot.sendMessage(msg.chat.id, antwort);
                     });
-                    bot.sendMessage(msg.chat.id, antwort);
                     client.addListener('error', function(message) {
                         console.log('error: ', message);
                     });
