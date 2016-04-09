@@ -8,11 +8,12 @@ var ausgabe = function (req, msg, ausgabe_text) {
     // fetch rss feed for the url:
     feed(req[0], function (err, articles) {
         //Set amount of articles to be listed.
+        var max;
         if (articles.length > 5) {
-            var max = 5;
+            max = 5;
         }
         else {
-            var max = articles.length;
+            max = articles.length;
         }
         // loop through the list of articles returned
         for (var i = 0; i < max; i++) {
@@ -40,18 +41,18 @@ var callback = function (msg) {
     switch (command[0].toLowerCase()) {
         case '/fick dich':
             antwort = 'Hier und jetzt? Nee. Lieber nicht.';
-            option = {reply_to_message_id: msg.message_id};
+            options = {reply_to_message_id: msg.message_id};
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
         //case ('/ja@kugel_bot'):
         case '/ja':
             antwort = 'Okay';
-            option = {reply_to_message_id: msg.message_id};
+            options = {reply_to_message_id: msg.message_id};
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
         case '/start':
             antwort = 'Hallo. Ich bin der Kugelbot.';
-            option = {reply_to_message_id: msg.message_id};
+            options = {reply_to_message_id: msg.message_id};
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
         case '/tagesschau':
@@ -62,7 +63,7 @@ var callback = function (msg) {
         case '/irc':
             switch (command[1].toLowerCase()) {
                 case 'start':
-                    antwort = 'IRC läuft';
+                    antwort = 'IRC verbunden';
                     var irc = require('irc');
                     var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
                         channels: ['#+Punkt']
@@ -74,39 +75,43 @@ var callback = function (msg) {
                     bot.sendMessage(msg.chat.id, antwort, options);
                     break;
                 case 'stop':
-                    client.
+                    antwort = 'IRC getrennt';
+                    client.disconnect();
+                    options = {reply_to_message_id: msg.message_id};
+                    bot.sendMessage(msg.chat.id, antwort, options);
                     break;
-            break;
-        case '/irc stop':
+                    break;
+                case '/irc stop':
 
-            break;
-        case '1337':
-            var msgTime = moment.unix(msg.date),
-                time = parseInt(msgTime.format('HHmm'));
+                    break;
+                case '1337':
+                    var msgTime = moment.unix(msg.date),
+                        time = parseInt(msgTime.format('HHmm'));
 
-            if (time === 1337){        // 1337
-                antwort = '1337';
-            } else if (time < 1337) {  // zu früh
-                antwort = 'Zu früh.';
-            } else {                   // zu spät
-                antwort = 'Zu spät.';
+                    if (time === 1337) {        // 1337
+                        antwort = '1337';
+                    } else if (time < 1337) {  // zu früh
+                        antwort = 'Zu früh.';
+                    } else {                   // zu spät
+                        antwort = 'Zu spät.';
+                    }
+
+                    options = {reply_to_message_id: msg.message_id};
+                    bot.sendMessage(msg.chat.id, antwort, options);
+                    break;
+                case 'gute nacht':
+                case 'gute nacht!':
+                case 'gute n8':
+                case 'good night':
+                case 'good night!':
+                case 'good n8':
+                    bot.sendSticker(msg.chat.id, 'BQADAwADrQIAAqbJWAABfU1XyeWYp6gC');
+                    break;
             }
-
-            options = {reply_to_message_id: msg.message_id};
-            bot.sendMessage(msg.chat.id, antwort, options);
-            break;
-        case 'gute nacht':
-        case 'gute nacht!':
-        case 'gute n8':
-        case 'good night':
-        case 'good night!':
-        case 'good n8':
-            bot.sendSticker(msg.chat.id, 'BQADAwADrQIAAqbJWAABfU1XyeWYp6gC');
-            break;
     }
-};
 
-module.exports = function (kugelbot) {
-    bot = kugelbot;
-    bot.on('text', callback);
+    module.exports = function (kugelbot) {
+        bot = kugelbot;
+        bot.on('text', callback);
+    };
 };
