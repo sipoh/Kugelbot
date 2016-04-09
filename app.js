@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    token = fs.readFileSync('./token.txt', 'utf8'),
+    token = fs.readFileSync('./token.txt', 'utf8').split('\n')[0],
     telegrambot = require('node-telegram-bot-api'),
     kugelbot = new telegrambot(token, {
         polling: true
