@@ -3,15 +3,9 @@ var bot,
     moment = require('moment'),
     irc = require('irc'),
     url = ["https://www.tagesschau.de/xml/rss2", 'www.tagesschau.de']; // RSS Feed
-/*var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
+var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
     autoConnect: false,
     username: 'KugelB0t',
-    channels: ['#+Punkt']
-});*/
-var client = new irc.Client('localhost', 'nodebot:n0d3b0t42', {
-    autoConnect: false,
-    username: 'nodebot',
-    port: 7001,
     channels: ['#+Punkt']
 });
 
@@ -78,8 +72,10 @@ var callback = function (msg) {
                 case 'start':
                     antwort = 'IRC verbunden';
                     client.connect();
-                    options = {reply_to_message_id: msg.message_id};
-                    bot.sendMessage(msg.chat.id, antwort, options);
+                    client.addListener('registered', function(message){
+                        bot.sendMessage(msg.chat.id, message);
+                    });
+                    bot.sendMessage(msg.chat.id, antwort);
                     break;
                 case 'listen':
                     antwort = 'IRC hört';
