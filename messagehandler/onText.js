@@ -32,7 +32,8 @@ var ausgabe = function (req, msg, ausgabe_text) {
 var callback = function (msg) {
     console.log(msg);
     var text = msg.text;
-    var command = text.split('@kugel_bot');
+    text = text.split('@kugel_bot');
+    var command = text.split('-');
     var antwort;
     var options;
     console.log(command);
@@ -59,16 +60,25 @@ var callback = function (msg) {
             ausgabe(url, msg, ausgabe_text);
             break;
         case '/irc':
-            antwort = 'IRC läuft';
-            var irc = require('irc');
-            var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
-                channels: ['#+Punkt']
-            });
-            client.addListener('message', function (from, to, message) {
-                console.log(from + ' => ' + to + ': ' + message);
-            });
-            option = {reply_to_message_id: msg.message_id};
-            bot.sendMessage(msg.chat.id, antwort, options);
+            switch (command[1].toLowerCase()) {
+                case 'start':
+                    antwort = 'IRC läuft';
+                    var irc = require('irc');
+                    var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
+                        channels: ['#+Punkt']
+                    });
+                    client.addListener('message', function (from, to, message) {
+                        console.log(from + ' => ' + to + ': ' + message);
+                    });
+                    options = {reply_to_message_id: msg.message_id};
+                    bot.sendMessage(msg.chat.id, antwort, options);
+                    break;
+                case 'stop':
+                    client.
+                    break;
+            break;
+        case '/irc stop':
+
             break;
         case '1337':
             var msgTime = moment.unix(msg.date),

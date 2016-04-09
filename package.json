@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "feed-read": "0.0.1",
-    "node-telegram-bot-api": "^0.17.0",
-    "irc": "^0.5.0"
+    "irc": "^0.5.0",
+    "moment": "^2.12.0",
+    "node-telegram-bot-api": "^0.17.0"
   }
 }
