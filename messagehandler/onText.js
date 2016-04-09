@@ -3,6 +3,13 @@ var bot,
     moment = require('moment'),
     irc = require('irc'),
     url = ["https://www.tagesschau.de/xml/rss2", 'www.tagesschau.de']; // RSS Feed
+var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
+    autoConnect: false,
+    port: 9999,
+    secure: true,
+    username: 'KugelB0t',
+    channels: ['#+Punkt']
+});
 
 var ausgabe = function (req, msg, ausgabe_text) {
     console.log(req);
@@ -40,13 +47,6 @@ var callback = function (msg) {
     console.log('command 1: ' + command[1]);
     var antwort;
     var options;
-    var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
-        autoConnect: false,
-        port: 9999,
-        secure: true,
-        username: 'KugelB0t',
-        channels: ['#+Punkt']
-    });
     switch (command[0].toLowerCase()) {
         case '/fick dich':
             antwort = 'Hier und jetzt? Nee. Lieber nicht.';
@@ -73,7 +73,6 @@ var callback = function (msg) {
             switch (command[1].toLowerCase()) {
                 case 'start':
                     antwort = 'IRC verbunden';
-
                     client.connect();
                     options = {reply_to_message_id: msg.message_id};
                     bot.sendMessage(msg.chat.id, antwort, options);
