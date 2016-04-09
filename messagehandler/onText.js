@@ -96,7 +96,7 @@ var callback = function (msg) {
                     break;
                 case 'say':
                     antwort = 'Okay';
-                    client.say(command[2].toLowerCase(),command[3].toLowerCase());
+                    client.say(command[2].toLowerCase(),command[3]);
                     bot.sendMessage(msg.chat.id, antwort);
                     break;
                 case 'stop':
