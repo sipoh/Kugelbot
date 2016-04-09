@@ -73,9 +73,12 @@ var callback = function (msg) {
                     antwort = 'IRC verbunden';
                     client.connect();
                     client.addListener('registered', function(message){
-                        bot.sendMessage(msg.chat.id, message);
+                        console.log(message);
                     });
                     bot.sendMessage(msg.chat.id, antwort);
+                    client.addListener('error', function(message) {
+                        console.log('error: ', message);
+                    });
                     break;
                 case 'listen':
                     antwort = 'IRC hört';
