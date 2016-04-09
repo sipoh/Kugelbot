@@ -5,8 +5,6 @@ var bot,
     url = ["https://www.tagesschau.de/xml/rss2", 'www.tagesschau.de']; // RSS Feed
 var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
     autoConnect: false,
-    port: 9999,
-    secure: true,
     username: 'KugelB0t',
     channels: ['#+Punkt']
 });
