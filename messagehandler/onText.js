@@ -83,32 +83,32 @@ var callback = function (msg) {
                     break;
                     break;
                 case '/irc stop':
-
-                    break;
-                case '1337':
-                    var msgTime = moment.unix(msg.date),
-                        time = parseInt(msgTime.format('HHmm'));
-
-                    if (time === 1337) {        // 1337
-                        antwort = '1337';
-                    } else if (time < 1337) {  // zu früh
-                        antwort = 'Zu früh.';
-                    } else {                   // zu spät
-                        antwort = 'Zu spät.';
-                    }
-
-                    options = {reply_to_message_id: msg.message_id};
-                    bot.sendMessage(msg.chat.id, antwort, options);
-                    break;
-                case 'gute nacht':
-                case 'gute nacht!':
-                case 'gute n8':
-                case 'good night':
-                case 'good night!':
-                case 'good n8':
-                    bot.sendSticker(msg.chat.id, 'BQADAwADrQIAAqbJWAABfU1XyeWYp6gC');
                     break;
             }
+            break;
+        case '1337':
+            var msgTime = moment.unix(msg.date),
+                time = parseInt(msgTime.format('HHmm'));
+
+            if (time === 1337) {        // 1337
+                antwort = '1337';
+            } else if (time < 1337) {  // zu früh
+                antwort = 'Zu früh.';
+            } else {                   // zu spät
+                antwort = 'Zu spät.';
+            }
+
+            options = {reply_to_message_id: msg.message_id};
+            bot.sendMessage(msg.chat.id, antwort, options);
+            break;
+        case 'gute nacht':
+        case 'gute nacht!':
+        case 'gute n8':
+        case 'good night':
+        case 'good night!':
+        case 'good n8':
+            bot.sendSticker(msg.chat.id, 'BQADAwADrQIAAqbJWAABfU1XyeWYp6gC');
+            break;
     }
 };
 
