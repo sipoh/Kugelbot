@@ -94,6 +94,11 @@ var callback = function (msg) {
                     client.part(command[2].toLowerCase());
                     bot.sendMessage(msg.chat.id, antwort);
                     break;
+                case 'say':
+                    antwort = 'Okay';
+                    client.say(command[2].toLowerCase(),command[3].toLowerCase());
+                    bot.sendMessage(msg.chat.id, antwort);
+                    break;
                 case 'stop':
                     antwort = 'IRC getrennt';
                     client.disconnect();
