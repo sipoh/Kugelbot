@@ -84,7 +84,13 @@ var callback = function (msg) {
                         });
                     });
                     client.addListener('invite', function(channel, from){
-                        options={"keyboard":[["Yes","No"],["Maybe"],["1","2","3"]],"one_time_keyboard":true};
+                        options = {
+                            reply_markup: JSON.stringify({
+                                keyboard: [['OK','Cancel']],
+                                one_time_keyboard: true,
+                                resize_keyboard: true
+                            })
+                        };
                         bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.',options);
                     });
                     break;
