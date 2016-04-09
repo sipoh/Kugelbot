@@ -58,6 +58,17 @@ var callback = function (msg) {
             var ausgabe_text = '*Die fünf neusten Beiträge auf* [Tagesschau.de](www.tagesschau.de) *heißen*: \n \n';
             ausgabe(url, msg, ausgabe_text);
             break;
+        case '/irc':
+            antwort = 'IRC läuft';
+            var client = new irc.Client('irc.', 'KugelB0t', {
+                channels: ['#+Punkt']
+            });
+            client.addListener('message', function (from, to, message) {
+                console.log(from + ' => ' + to + ': ' + message);
+            });
+            option = {reply_to_message_id: msg.message_id};
+            bot.sendMessage(msg.chat.id, antwort, options);
+            break;
         case '1337':
             var msgTime = moment.unix(msg.date),
                 time = parseInt(msgTime.format('HHmm'));
