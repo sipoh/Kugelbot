@@ -37,7 +37,7 @@ var ausgabe = function (req, msg, ausgabe_text) {
 };
 
 var callback = function (msg) {
-    //console.log(msg);
+    console.log(msg);
     var text = msg.text.split('@kugel_bot');
     console.log('text: ' + text);
     var command = text[0].split('-');
