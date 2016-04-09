@@ -77,13 +77,22 @@ var callback = function (msg) {
                     break;
                 case 'listen':
                     antwort = 'IRC hört';
-                    options = {reply_to_message_id: msg.message_id};
-                    bot.sendMessage(msg.chat.id, antwort, options);
+                    bot.sendMessage(msg.chat.id, antwort);
                     client.addListener('message', function (from, to, message) {
                         antwort = from + ' => ' + to + ': ' + message;
                         console.log(antwort);
                         bot.sendMessage(msg.chat.id, antwort);
                     });
+                    break;
+                case 'join':
+                    antwort = 'Okay';
+                    client.join(command[2].toLowerCase());
+                    bot.sendMessage(msg.chat.id, antwort);
+                    break;
+                case 'part':
+                    antwort = 'Okay';
+                    client.part(command[2].toLowerCase());
+                    bot.sendMessage(msg.chat.id, antwort);
                     break;
                 case 'stop':
                     antwort = 'IRC getrennt';
