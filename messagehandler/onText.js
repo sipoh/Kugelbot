@@ -76,6 +76,9 @@ var callback = function (msg) {
                     bot.sendMessage(msg.chat.id, antwort, options);
                     break;
                 case 'listen':
+                    antwort = 'IRC hört';
+                    options = {reply_to_message_id: msg.message_id};
+                    bot.sendMessage(msg.chat.id, antwort, options);
                     client.addListener('message', function (from, to, message) {
                         antwort = from + ' => ' + to + ': ' + message;
                         console.log(antwort);
