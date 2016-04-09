@@ -33,10 +33,11 @@ var ausgabe = function (req, msg, ausgabe_text) {
 var callback = function (msg) {
     console.log(msg);
     var text = msg.text.split('@kugel_bot');
+    console.log(text);
     var command = text.split('-');
+    console.log(command);
     var antwort;
     var options;
-    console.log(command);
     switch (command[0].toLowerCase()) {
         case '/fick dich':
             antwort = 'Hier und jetzt? Nee. Lieber nicht.';
