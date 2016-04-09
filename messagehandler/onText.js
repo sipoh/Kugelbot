@@ -35,7 +35,8 @@ var callback = function (msg) {
     var text = msg.text.split('@kugel_bot');
     console.log('text: ' + text);
     var command = text.split('>');
-    console.log('command: ' + command);
+    console.log('command 0: ' + command[0]);
+    console.log('command 1: ' + command[1]);
     var antwort;
     var options;
     switch (command[0].toLowerCase()) {
