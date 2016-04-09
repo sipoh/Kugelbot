@@ -109,9 +109,9 @@ var callback = function (msg) {
                     break;
             }
     }
+};
 
-    module.exports = function (kugelbot) {
-        bot = kugelbot;
-        bot.on('text', callback);
-    };
+module.exports = function (kugelbot) {
+    bot = kugelbot;
+    bot.on('text', callback);
 };
