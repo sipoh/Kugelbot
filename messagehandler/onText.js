@@ -33,9 +33,9 @@ var ausgabe = function (req, msg, ausgabe_text) {
 var callback = function (msg) {
     console.log(msg);
     var text = msg.text.split('@kugel_bot');
-    console.log(text);
+    console.log('text:' + text);
     var command = text.split('-');
-    console.log(command);
+    console.log('command:' + command);
     var antwort;
     var options;
     switch (command[0].toLowerCase()) {
