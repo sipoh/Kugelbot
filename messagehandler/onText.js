@@ -83,8 +83,9 @@ var callback = function (msg) {
                                 return  console.log(err);
                         });
                     });
-                    client.addListener('invite', function(channel, from, message){
-                        bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.');
+                    client.addListener('invite', function(channel, from){
+                        options = {reply_markup: {keyboard: ['Ja','Nein']}};
+                        bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.',options);
                     });
                     break;
                 case 'listen':
