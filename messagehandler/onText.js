@@ -67,13 +67,22 @@ var callback = function (msg) {
                     antwort = 'IRC verbunden';
                     var irc = require('irc');
                     var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
+                        autoConnect: false,
+                        port: 9999,
+                        secure: true,
+                        username: 'KugelB0t',
                         channels: ['#+Punkt']
                     });
-                    client.addListener('message', function (from, to, message) {
-                        console.log(from + ' => ' + to + ': ' + message);
-                    });
+                    client.connect();
                     options = {reply_to_message_id: msg.message_id};
                     bot.sendMessage(msg.chat.id, antwort, options);
+                    break;
+                case 'listen':
+                    client.addListener('message', function (from, to, message) {
+                        antwort = from + ' => ' + to + ': ' + message;
+                        console.log(antwort);
+                        bot.sendMessage(msg.chat.id, antwort);
+                    });
                     break;
                 case 'stop':
                     antwort = 'IRC getrennt';
