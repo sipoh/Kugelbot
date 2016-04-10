@@ -69,7 +69,17 @@ var callback = function (msg) {
             ausgabe(url, msg, ausgabe_text);
             break;
         case '/troj':
-            antwort = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn='+command[1].toLowerCase()+ '&tn='+command[2].toLowerCase();
+            switch (command[1].toLowerCase()) {
+                case 'uni':
+                    antwort = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&apl=122&aro=1&t=2&fn=hestii&tn=bazynskiego';
+                    break;
+                case 'heim':
+                    antwort = "http://jakdojade.pl?fn=54%C2%B023'57%22%2C+18%C2%B034'18%22&fc=54.39944:18.5719&fn=Hestii&t=2&cid=7000&as=true&apl=122&apv=train&aro=1";
+                    break;
+                default:
+                    antwort= 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn=' + command[1].toLowerCase() + '&tn=' + command[2].toLowerCase();
+                    break;
+            }
             bot.sendMessage(msg.chat.id, antwort);
             break;
         case '/irc':
