@@ -68,7 +68,7 @@ var callback = function (msg) {
             ausgabe(url, msg, ausgabe_text);
             break;
         case '/troj':
-            antowrt = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn'+command[1].toLowerCase()+ '&tn='+command[2].toLowerCase();
+            antwort = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn'+command[1].toLowerCase()+ '&tn='+command[2].toLowerCase();
             bot.sendMessage(msg.chat.id, antwort);
             break;
         case '/irc':
