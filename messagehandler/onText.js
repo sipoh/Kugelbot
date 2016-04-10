@@ -43,6 +43,7 @@ var callback = function (msg) {
     var command = text[0].split('-');
     console.log('command 0: ' + command[0]);
     console.log('command 1: ' + command[1]);
+    console.log('command 2: ' + command[2]);
     var antwort;
     var options;
     switch (command[0].toLowerCase()) {
@@ -68,7 +69,7 @@ var callback = function (msg) {
             ausgabe(url, msg, ausgabe_text);
             break;
         case '/troj':
-            antwort = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn'+command[1].toLowerCase()+ '&tn='+command[2].toLowerCase();
+            antwort = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn='+command[1].toLowerCase()+ '&tn='+command[2].toLowerCase();
             bot.sendMessage(msg.chat.id, antwort);
             break;
         case '/irc':
