@@ -67,6 +67,10 @@ var callback = function (msg) {
             var ausgabe_text = '*Die fünf neusten Beiträge auf* [Tagesschau.de](www.tagesschau.de) *heißen*: \n \n';
             ausgabe(url, msg, ausgabe_text);
             break;
+        case '/troj':
+            antowrt = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn'+command[1].toLowerCase()+ '&tn='+command[2].toLowerCase();
+            bot.sendMessage(msg.chat.id, antwort);
+            break;
         case '/irc':
             switch (command[1].toLowerCase()) {
                 case 'start':
