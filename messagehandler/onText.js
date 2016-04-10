@@ -74,7 +74,7 @@ var callback = function (msg) {
                     antwort = 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&apl=122&aro=1&t=2&fn=hestii&tn=bazynskiego';
                     break;
                 case 'heim':
-                    antwort = "http://jakdojade.pl?fn=54%C2%B023'57%22%2C+18%C2%B034'18%22&fc=54.39944:18.5719&tn=Hestii+&ts=Hestii+&tc=54.43195:18.58374&ia=false&t=2&n=0&ri=0&cid=7000&as=true&apl=122&apv=train&aro=1";
+                    antwort = "http://jakdojade.pl?fn=54%C2%B023'57%22%2C+18%C2%B034'18%22&fs=&fsc=&fc=54.39944:18.5719&tn=Hestii+&ts=Hestii+&tsc=&tc=54.43195:18.58374&ia=false&t=2&n=0&ri=0&cid=7000&as=true&apl=122&apv=train&aro=1";
                     break;
                 default:
                     antwort= 'http://trojmiasto.jakdojade.pl/?apv=train&as=true&fn=' + command[1].toLowerCase() + '&tn=' + command[2].toLowerCase();
