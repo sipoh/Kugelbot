@@ -142,6 +142,6 @@ var callback = function(from, to, message) {
             break;
     }
 };
-module.exports = function (from, to, message) {
-    callback(from, to, message);
+module.exports = function (client, from, to, message) {
+    callback(client, from, to, message);
 };
