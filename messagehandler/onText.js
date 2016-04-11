@@ -3,9 +3,9 @@ var bot,
     moment = require('moment'),
     irc = require('irc'),
     url = ["https://www.tagesschau.de/xml/rss2", 'www.tagesschau.de']; // RSS Feed
-var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
+var client = new irc.Client('irc.hamburg.ccc.de', 'Nodebot', {
     autoConnect: false,
-    username: 'KugelB0t',
+    username: 'Nodebot',
     channels: ['#+Punkt']
 });
 var ircstatus = false;
