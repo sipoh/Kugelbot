@@ -82,7 +82,7 @@ var callback = function (msg) {
             }
             bot.sendMessage(msg.chat.id, antwort);
             break;
-        case '/irc':
+        /*case '/irc':
             switch (command[1].toLowerCase()) {
                 case 'start':
                     client.connect();
@@ -143,7 +143,7 @@ var callback = function (msg) {
                     bot.sendMessage(msg.chat.id, antwort, options);
                     break;
             }
-            break;
+            break;*/
         case '1337':
             var msgTime = moment.unix(msg.date),
                 time = parseInt(msgTime.format('HHmm'));
