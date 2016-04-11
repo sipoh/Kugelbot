@@ -117,16 +117,17 @@ var reaction = function (from, to, msg) {
         //    }
         //    break;
         case '1337':
-            var msgTime = moment.unix(msg.date),
-                time = parseInt(msgTime.format('HHmm'));
+            //var msgTime = moment.unix(msg.date),
+            //    time = parseInt(msgTime.format('HHmm'));
 
-            if (time === 1337) {        // 1337
-                antwort = '1337';
-            } else if (time < 1337) {  // zu früh
-                antwort = 'Zu früh.';
-            } else {                   // zu spät
-                antwort = 'Zu spät.';
-            }
+            //if (time === 1337) {        // 1337
+            //    antwort = '1337';
+            //} else if (time < 1337) {  // zu früh
+            //    antwort = 'Zu früh.';
+            //} else {                   // zu spät
+            //    antwort = 'Zu spät.';
+            //}
+            antwort = 'Keine Ahnung.';
             client.say(from,antwort);
             break;
         case 'gute nacht':
@@ -136,7 +137,7 @@ var reaction = function (from, to, msg) {
         case 'good night!':
         case 'good n8':
             //bot.sendSticker(msg.chat.id, 'BQADAwADrQIAAqbJWAABfU1XyeWYp6gC');
-            client.say(from,antwort);
+            client.say(from,'BQADAwADrQIAAqbJWAABfU1XyeWYp6gC');
             break;
     }
 };
