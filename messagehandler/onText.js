@@ -110,8 +110,8 @@ var callback = function (msg) {
                         };
                         bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.',options);
                     });
-                    require('./messagehandler/irc_test')(kugelbot);
                     ircstatus = true;
+                    require('./messagehandler/irc_test')(kugelbot);
                     break;
                 case 'listen':
                     if(ircstatus){
