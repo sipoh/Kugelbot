@@ -87,6 +87,8 @@ var callback = function (msg) {
             switch (command[1].toLowerCase()) {
                 case 'start':
                     client.connect();
+                    require('irc_test')(client);
+                    console.log('test');
                     client.addListener('registered', function(message){
                         console.log(message);
                         antwort = message.server + ': ' + message.args[1];
@@ -111,7 +113,6 @@ var callback = function (msg) {
                         bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.',options);
                     });
                     ircstatus = true;
-                    require('irc_test')(client);
                     break;
                 case 'listen':
                     if(ircstatus){
