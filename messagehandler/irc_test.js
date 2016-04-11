@@ -3,8 +3,10 @@
  */
 
 //antwort = message.server + ': ' + message.args[1];
+console.log('irc_test');
 
 var reaction = function (from, to, msg) {
+    console.log('reaction');
     console.log(msg);
     var text = msg.text.split('@kugel_bot');
     console.log('text: ' + text);
@@ -142,12 +144,16 @@ var reaction = function (from, to, msg) {
     }
 };
 
-client.addListener('message', function (from, to, message) {
-    //console.log(message);
-    reaction(from, to, message);
-});
+//var callback = function (client) {
+//    client.addListener('message', function (from, to, message) {
+//        //console.log(message);
+//        reaction(from, to, message);
+//    });
+//};
 
-module.exports = function (kugelbot) {
-    bot = kugelbot;
-    bot.on('text', callback);
+module.exports = function (client) {
+    client.addListener('message', function (from, to, message) {
+        //console.log(message);
+        reaction(from, to, message);
+    });
 };
