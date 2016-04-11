@@ -4,7 +4,7 @@
 /**
  * Created by Simon on 11/04/2016.
  */
-var callback = function(from, to, message) {
+var callback = function(client, from, to, message) {
     console.log('reaction');
     console.log(message);
 //var text = msg.text.split('@kugel_bot');
