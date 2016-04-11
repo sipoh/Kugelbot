@@ -125,7 +125,7 @@ var callback = function (msg) {
                             bot.sendMessage(msg.chat.id, antwort);
 
 
-                            require('test')(from, to, message);
+                            require('./messagehandler/test2')(from, to, message);
 
                         });
                     }
