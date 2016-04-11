@@ -111,7 +111,7 @@ var callback = function (msg) {
                         bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.',options);
                     });
                     ircstatus = true;
-                    require('irc_test')(kugelbot);
+                    require('irc_test')(client);
                     break;
                 case 'listen':
                     if(ircstatus){
