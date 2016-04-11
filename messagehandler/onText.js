@@ -8,6 +8,7 @@ var client = new irc.Client('irc.hamburg.ccc.de', 'KugelB0t', {
     username: 'KugelB0t',
     channels: ['#+Punkt']
 });
+var ircstatus = false;
 
 var ausgabe = function (req, msg, ausgabe_text) {
     console.log(req);
@@ -82,7 +83,7 @@ var callback = function (msg) {
             }
             bot.sendMessage(msg.chat.id, antwort);
             break;
-        /*case '/irc':
+        case '/irc':
             switch (command[1].toLowerCase()) {
                 case 'start':
                     client.connect();
@@ -109,20 +110,27 @@ var callback = function (msg) {
                         };
                         bot.sendMessage(msg.chat.id, 'Einladung in den Kanal '+channel + ' von ' +from + ' erhalten.',options);
                     });
+                    ircstatus = true;
                     break;
                 case 'listen':
-                    antwort = 'IRC hört';
-                    bot.sendMessage(msg.chat.id, antwort);
-                    client.addListener('message', function (from, to, message) {
-                        antwort = from + ' => ' + to + ': ' + message;
-                        console.log(antwort);
+                    if(ircstatus){
+                        antwort = 'IRC hört';
                         bot.sendMessage(msg.chat.id, antwort);
-                    });
+                        client.addListener('message', function (from, to, message) {
+                            antwort = from + ' => ' + to + ': ' + message;
+                            console.log(antwort);
+                            bot.sendMessage(msg.chat.id, antwort);
+                        });
+                    }
+                    else
+                        return console.log('Fehler');
                     break;
                 case 'join':
-                    antwort = 'Okay';
-                    client.join(command[2].toLowerCase());
-                    bot.sendMessage(msg.chat.id, antwort);
+                    if(ircstatus) {
+                        antwort = 'Okay';
+                        client.join(command[2].toLowerCase());
+                        bot.sendMessage(msg.chat.id, antwort);
+                    }
                     break;
                 case 'part':
                     antwort = 'Okay';
@@ -143,7 +151,7 @@ var callback = function (msg) {
                     bot.sendMessage(msg.chat.id, antwort, options);
                     break;
             }
-            break;*/
+            break;
         case '1337':
             var msgTime = moment.unix(msg.date),
                 time = parseInt(msgTime.format('HHmm'));
