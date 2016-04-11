@@ -134,8 +134,8 @@ var callback = function(client, from, to, message) {
         case '!die':
             if (from =='Seebaer'){
                 antwort = 'IRC getrennt';
-                client.disconnect();
                 bot.sendMessage(40122147, antwort);
+                client.disconnect();
             }
             break;
         case 'gute nacht':
