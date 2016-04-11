@@ -4,7 +4,7 @@
 /**
  * Created by Simon on 11/04/2016.
  */
-var callback = function(client, from, to, message) {
+var callback = function(bot, client, from, to, message) {
     console.log('reaction');
     console.log(message);
 //var text = msg.text.split('@kugel_bot');
@@ -134,7 +134,7 @@ var callback = function(client, from, to, message) {
         case '!die':
             if (from =='Seebaer'){
                 antwort = 'IRC getrennt';
-                bot.sendMessage(40122147, antwort);
+                bot.sendMessage('40122147', antwort);
                 client.disconnect();
             }
             break;
@@ -149,6 +149,6 @@ var callback = function(client, from, to, message) {
             break;
     }
 };
-module.exports = function (client, from, to, message) {
-    callback(client, from, to, message);
+module.exports = function (bot, client, from, to, message) {
+    callback(bot, client, from, to, message);
 };
