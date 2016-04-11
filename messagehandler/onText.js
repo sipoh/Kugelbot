@@ -87,8 +87,9 @@ var callback = function (msg) {
             switch (command[1].toLowerCase()) {
                 case 'start':
                     client.connect();
+                    console.log('test0');
                     require('irc_test')(client);
-                    console.log('test');
+                    console.log('test1');
                     client.addListener('registered', function(message){
                         console.log(message);
                         antwort = message.server + ': ' + message.args[1];

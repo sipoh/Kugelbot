@@ -5,7 +5,7 @@
 //antwort = message.server + ': ' + message.args[1];
 console.log('irc_test');
 
-var reaction = function (from, to, msg) {
+var reaction = function (client, from, to, msg) {
     console.log('reaction');
     console.log(msg);
     var text = msg.text.split('@kugel_bot');
@@ -151,9 +151,9 @@ var reaction = function (from, to, msg) {
 //    });
 //};
 
-module.exports = function (client) {
-    client.addListener('message', function (from, to, message) {
+module.exports = function (bla) {
+    bla.addListener('message', function (from, to, message) {
         //console.log(message);
-        reaction(from, to, message);
+        reaction(bla, from, to, message);
     });
 };
