@@ -191,6 +191,8 @@ var callback = function(msg) {
             busabfrage('hbf', msg, function(cb) {
                 console.log(cb);
             });
+            options = { reply_to_message_id: msg.message_id };
+            bot.sendMessage(msg.chat.id, 'Test', options);
             break;
         case 'gute nacht':
         case 'gute nacht!':
