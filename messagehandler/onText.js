@@ -39,13 +39,26 @@ var ausgabe = function(req, msg, ausgabe_text) {
 
 var busabfrage = function(busstop, msg, cb) {
     var busstoplist = [
-        { 'mastid': '4545102', 'name': '13er Str' },
-        { 'mastid': '4100002', 'name': 'Hbf' }
+        { 'mastid': '4545102', 'shortname': '13er Str', 'name': 'Dreizehnerstraße' },
+        { 'mastid': '4100002', 'shortname': 'Hbf', 'name': 'Hauptbahnhof B1' }
     ];
-    var antwort = '*FISMS*\n' +
-        'Die nächsten Busse ab Haltestelle' + busstop + '\n';
-    var options = { reply_to_message_id: msg.message_id };
-    bot.sendMessage(msg.chat.id, antwort, options);
+    var busstopprint;
+    for(var i in busstoplist) {
+        if(busstoplist[i].mastid == busstop) {
+            busstopprint = busstoplist[i].shortname;
+        }
+    }
+    if(busstopprint) {
+        var antwort = '*FISMS*\n' +
+            'Die nächsten Busse ab Haltestelle ' + busstopprint + '\n';
+        var options = { reply_to_message_id: msg.message_id };
+        bot.sendMessage(msg.chat.id, antwort, options);
+    }
+    else {
+        var options = { reply_to_message_id: msg.message_id };
+        bot.sendMessage(msg.chat.id, 'Keine Busse gefunden', options);
+    }
+
     cb = antwort;
 };
 
@@ -188,11 +201,9 @@ var callback = function(msg) {
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
         case 'bus hbf':
-            busabfrage('hbf', msg, function(cb) {
+            busabfrage('4100002', msg, function(cb) {
                 console.log(cb);
             });
-            options = { reply_to_message_id: msg.message_id };
-            bot.sendMessage(msg.chat.id, 'Test', options);
             break;
         case 'gute nacht':
         case 'gute nacht!':
