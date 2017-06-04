@@ -46,7 +46,7 @@ var busabfrage = function(busstop, msg, cb) {
         'Die nächsten Busse ab Haltestelle' + busstop + '\n';
     var options = { reply_to_message_id: msg.message_id };
     bot.sendMessage(msg.chat.id, antwort, options);
-
+    cb = antwort;
 };
 
 var callback = function(msg) {
@@ -191,6 +191,7 @@ var callback = function(msg) {
             busabfrage('hbf', msg, function(cb) {
                 console.log(cb);
             });
+            break;
         case 'gute nacht':
         case 'gute nacht!':
         case 'gute n8':
