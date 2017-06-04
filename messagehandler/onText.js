@@ -188,7 +188,7 @@ var callback = function(msg) {
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
         case 'bus hbf':
-            busabfrage('hbf', function(cb) {
+            busabfrage('hbf', msg, function(cb) {
                 console.log(cb);
             });
         case 'gute nacht':
