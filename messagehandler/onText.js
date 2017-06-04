@@ -51,7 +51,7 @@ var busabfrage = function(busstop, msg, cb) {
     if(busstopprint) {
         var antwort = '*FISMS*\n' +
             'Die nächsten Busse ab Haltestelle ' + busstopprint + '\n';
-        var options = { reply_to_message_id: msg.message_id };
+        options = { parse_mode: 'Markdown' };
         bot.sendMessage(msg.chat.id, antwort, options);
     }
     else {
