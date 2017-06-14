@@ -8,6 +8,33 @@ var client = new irc.Client('irc.hamburg.ccc.de', 'Nodebot', {
     username:    'Nodebot',
     channels:    ['#+Punkt']
 });
+myDefinitions();
+
+function myDefinitions() {
+    var busstoplist = [
+        {
+            'mastid':    '4545102',
+            'trigger':   '13',
+            'shortname': '13er Str',
+            'name':      'Dreizehnerstraße',
+            'lines':     'all'
+        },
+        {
+            'mastid':    '4100002',
+            'trigger':   'hbf',
+            'shortname': 'Hbf',
+            'name':      'Hauptbahnhof B1',
+            'lines':     ['15', '16', 'N81', 'N9']
+        },
+        {
+            'mastid':    '4129101',
+            'trigger':   'ti',
+            'shortname': 'TiBus',
+            'name':      'Tibusstraße',
+            'lines':     ['15', '16', 'N81', 'N9']
+        }
+    ];
+}
 var ircstatus = false;
 
 var ausgabe = function(req, msg, ausgabe_text) {
@@ -38,29 +65,29 @@ var ausgabe = function(req, msg, ausgabe_text) {
 };
 
 var busabfrage = function(busstop, msg, cb) {
-    var busstoplist = [
-        {
-            'mastid':    '4545102',
-            'trigger':   '13',
-            'shortname': '13er Str',
-            'name':      'Dreizehnerstraße',
-            'lines':     'all'
-        },
-        {
-            'mastid':    '4100002',
-            'trigger':   'hbf',
-            'shortname': 'Hbf',
-            'name':      'Hauptbahnhof B1',
-            'lines':     ['15', '16', 'N81', 'N9']
-        },
-        {
-            'mastid':    '4129101',
-            'trigger':   'ti',
-            'shortname': 'TiBus',
-            'name':      'Tibusstraße',
-            'lines':     ['15', '16', 'N81', 'N9']
-        }
-    ];
+    // var busstoplist = [
+    //     {
+    //         'mastid':    '4545102',
+    //         'trigger':   '13',
+    //         'shortname': '13er Str',
+    //         'name':      'Dreizehnerstraße',
+    //         'lines':     'all'
+    //     },
+    //     {
+    //         'mastid':    '4100002',
+    //         'trigger':   'hbf',
+    //         'shortname': 'Hbf',
+    //         'name':      'Hauptbahnhof B1',
+    //         'lines':     ['15', '16', 'N81', 'N9']
+    //     },
+    //     {
+    //         'mastid':    '4129101',
+    //         'trigger':   'ti',
+    //         'shortname': 'TiBus',
+    //         'name':      'Tibusstraße',
+    //         'lines':     ['15', '16', 'N81', 'N9']
+    //     }
+    // ];
     var busstopprint;
     for(var i in busstoplist) {
         if(busstoplist[i].mastid == busstop) {
@@ -220,29 +247,6 @@ var callback = function(msg) {
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
         case 'bus':
-            var busstoplist = [
-                {
-                    'mastid':    '4545102',
-                    'trigger':   '13',
-                    'shortname': '13er Str',
-                    'name':      'Dreizehnerstraße',
-                    'lines':     'all'
-                },
-                {
-                    'mastid':    '4100002',
-                    'trigger':   'hbf',
-                    'shortname': 'Hbf',
-                    'name':      'Hauptbahnhof B1',
-                    'lines':     ['15', '16', 'N81', 'N9']
-                },
-                {
-                    'mastid':    '4129101',
-                    'trigger':   'ti',
-                    'shortname': 'TiBus',
-                    'name':      'Tibusstraße',
-                    'lines':     ['15', '16', 'N81', 'N9']
-                }
-            ];
             console.log(command[1].toLowerCase());
             for(var i in busstoplist) {
                 console.log('i: '+i);
