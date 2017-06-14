@@ -8,7 +8,6 @@ var client = new irc.Client('irc.hamburg.ccc.de', 'Nodebot', {
     username:    'Nodebot',
     channels:    ['#+Punkt']
 });
-// myDefinitions();
 
 var busstoplist = [
     {
@@ -64,29 +63,6 @@ var ausgabe = function(req, msg, ausgabe_text) {
 };
 
 var busabfrage = function(busstop, msg, cb) {
-    // var busstoplist = [
-    //     {
-    //         'mastid':    '4545102',
-    //         'trigger':   '13',
-    //         'shortname': '13er Str',
-    //         'name':      'Dreizehnerstraße',
-    //         'lines':     'all'
-    //     },
-    //     {
-    //         'mastid':    '4100002',
-    //         'trigger':   'hbf',
-    //         'shortname': 'Hbf',
-    //         'name':      'Hauptbahnhof B1',
-    //         'lines':     ['15', '16', 'N81', 'N9']
-    //     },
-    //     {
-    //         'mastid':    '4129101',
-    //         'trigger':   'ti',
-    //         'shortname': 'TiBus',
-    //         'name':      'Tibusstraße',
-    //         'lines':     ['15', '16', 'N81', 'N9']
-    //     }
-    // ];
     var busstopprint;
     for(var i in busstoplist) {
         if(busstoplist[i].mastid == busstop) {
@@ -248,9 +224,13 @@ var callback = function(msg) {
         case 'bus':
             console.log(command[1].toLowerCase());
             for(var i in busstoplist) {
-                console.log('i: '+i);
+                console.log('i: ' + i);
                 if(busstoplist[i].trigger == command[1].toLowerCase()) {
                     busstopprint = busstoplist[i].shortname;
+                    var id = busstoplist[i].mastid;
+                    busabfrage(id, msg, function(cb) {
+                        console.log(cb);
+                    });
                 }
             }
             console.log(busstopprint);
@@ -270,32 +250,6 @@ var callback = function(msg) {
             break;
     }
 };
-
-// function myDefinitions() {
-//     var busstoplist = [
-//         {
-//             'mastid':    '4545102',
-//             'trigger':   '13',
-//             'shortname': '13er Str',
-//             'name':      'Dreizehnerstraße',
-//             'lines':     'all'
-//         },
-//         {
-//             'mastid':    '4100002',
-//             'trigger':   'hbf',
-//             'shortname': 'Hbf',
-//             'name':      'Hauptbahnhof B1',
-//             'lines':     ['15', '16', 'N81', 'N9']
-//         },
-//         {
-//             'mastid':    '4129101',
-//             'trigger':   'ti',
-//             'shortname': 'TiBus',
-//             'name':      'Tibusstraße',
-//             'lines':     ['15', '16', 'N81', 'N9']
-//         }
-//     ];
-// }
 
 module.exports = function(kugelbot) {
     bot = kugelbot;
