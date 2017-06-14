@@ -39,8 +39,27 @@ var ausgabe = function(req, msg, ausgabe_text) {
 
 var busabfrage = function(busstop, msg, cb) {
     var busstoplist = [
-        { 'mastid': '4545102', 'shortname': '13er Str', 'name': 'Dreizehnerstraße' },
-        { 'mastid': '4100002', 'shortname': 'Hbf', 'name': 'Hauptbahnhof B1' }
+        {
+            'mastid':    '4545102',
+            'trigger':   '13',
+            'shortname': '13er Str',
+            'name':      'Dreizehnerstraße',
+            'lines':     'all'
+        },
+        {
+            'mastid':    '4100002',
+            'trigger':   'hbf',
+            'shortname': 'Hbf',
+            'name':      'Hauptbahnhof B1',
+            'lines':     ['15', '16', 'N81', 'N9']
+        },
+        {
+            'mastid':    '4129101',
+            'trigger':   'ti',
+            'shortname': 'TiBus',
+            'name':      'Tibusstraße',
+            'lines':     ['15', '16', 'N81', 'N9']
+        }
     ];
     var busstopprint;
     for(var i in busstoplist) {
@@ -202,6 +221,13 @@ var callback = function(msg) {
             break;
         case 'bus':
             console.log(command[1].toLowerCase());
+            for(var i in busstoplist) {
+
+                if(busstoplist[i].trigger == command[1].toLowerCase()) {
+                    busstopprint = busstoplist[i].shortname;
+                }
+            }
+            console.log(busstopprint);
             break;
         // case 'bus hbf':
         //     busabfrage('4100002', msg, function(cb) {
