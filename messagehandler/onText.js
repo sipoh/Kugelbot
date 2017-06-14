@@ -200,6 +200,9 @@ var callback = function(msg) {
             options = { reply_to_message_id: msg.message_id };
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
+        case 'bus':
+            console.log(command[1].toLowerCase());
+            break;
         // case 'bus hbf':
         //     busabfrage('4100002', msg, function(cb) {
         //         console.log(cb);
