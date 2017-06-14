@@ -200,11 +200,11 @@ var callback = function(msg) {
             options = { reply_to_message_id: msg.message_id };
             bot.sendMessage(msg.chat.id, antwort, options);
             break;
-        case 'bus hbf':
-            busabfrage('4100002', msg, function(cb) {
-                console.log(cb);
-            });
-            break;
+        // case 'bus hbf':
+        //     busabfrage('4100002', msg, function(cb) {
+        //         console.log(cb);
+        //     });
+        //     break;
         case 'gute nacht':
         case 'gute nacht!':
         case 'gute n8':
