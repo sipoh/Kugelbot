@@ -10,31 +10,7 @@ var client = new irc.Client('irc.hamburg.ccc.de', 'Nodebot', {
 });
 myDefinitions();
 
-function myDefinitions() {
-    var busstoplist = [
-        {
-            'mastid':    '4545102',
-            'trigger':   '13',
-            'shortname': '13er Str',
-            'name':      'Dreizehnerstraße',
-            'lines':     'all'
-        },
-        {
-            'mastid':    '4100002',
-            'trigger':   'hbf',
-            'shortname': 'Hbf',
-            'name':      'Hauptbahnhof B1',
-            'lines':     ['15', '16', 'N81', 'N9']
-        },
-        {
-            'mastid':    '4129101',
-            'trigger':   'ti',
-            'shortname': 'TiBus',
-            'name':      'Tibusstraße',
-            'lines':     ['15', '16', 'N81', 'N9']
-        }
-    ];
-}
+
 var ircstatus = false;
 
 var ausgabe = function(req, msg, ausgabe_text) {
@@ -271,6 +247,32 @@ var callback = function(msg) {
             break;
     }
 };
+
+function myDefinitions() {
+    var busstoplist = [
+        {
+            'mastid':    '4545102',
+            'trigger':   '13',
+            'shortname': '13er Str',
+            'name':      'Dreizehnerstraße',
+            'lines':     'all'
+        },
+        {
+            'mastid':    '4100002',
+            'trigger':   'hbf',
+            'shortname': 'Hbf',
+            'name':      'Hauptbahnhof B1',
+            'lines':     ['15', '16', 'N81', 'N9']
+        },
+        {
+            'mastid':    '4129101',
+            'trigger':   'ti',
+            'shortname': 'TiBus',
+            'name':      'Tibusstraße',
+            'lines':     ['15', '16', 'N81', 'N9']
+        }
+    ];
+}
 
 module.exports = function(kugelbot) {
     bot = kugelbot;
