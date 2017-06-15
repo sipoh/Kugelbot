@@ -88,9 +88,9 @@ var callback = function(msg) {
     var text = msg.text.split('@kugel_bot');
     console.log('text: ' + text);
     var command = text[0].split('-');
-    console.log('command 0: ' + command[0]);
-    console.log('command 1: ' + command[1]);
-    console.log('command 2: ' + command[2]);
+    for(var i in command) {
+        console.log('command ' + i + ': ' + command[i]);
+    }
     var antwort;
     var options;
     switch(command[0].toLowerCase()) {
